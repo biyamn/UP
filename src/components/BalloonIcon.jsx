@@ -1,6 +1,6 @@
 import React from "react";
 
-const BalloonIcon = () => {
+const BalloonIcon = ({ onClick }) => {
   return (
     <svg
       version="1.0"
@@ -11,6 +11,7 @@ const BalloonIcon = () => {
       preserveAspectRatio="xMidYMid meet"
     >
       <g
+        onClick={onClick}
         transform="translate(0.000000,360.000000) scale(0.100000,-0.100000)"
         fill="blue"
         stroke="none"
