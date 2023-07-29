@@ -12,6 +12,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@mojs/core": "^1.6.0",
     "framer-motion": "^10.15.0",
     "prettier": "^3.0.0",
     "react": "^18.2.0",
