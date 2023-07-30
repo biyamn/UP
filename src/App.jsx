@@ -5,6 +5,7 @@ import houseIcon from "./assets/house_pixel.png";
 import cloudIcon from "./assets/cloud_pixel.png";
 import styled from "styled-components";
 import mojs from "@mojs/core";
+import randomColor from "randomcolor";
 
 // 이곳에 모두 구현 후 분리 예정
 function App() {
@@ -12,12 +13,15 @@ function App() {
 
   const getDegree = () => Math.floor(Math.random() * 90) - 45;
 
+  const getColor = () => randomColor();
+
   const createBalloon = () => {
     setBalloons((prevBalloons) => [
       ...prevBalloons,
       {
         id: prevBalloons.length + 1,
         degree: getDegree(),
+        color: getColor(),
       },
     ]);
   };
@@ -26,23 +30,23 @@ function App() {
     const burst = new mojs.Burst({
       left: 0,
       top: 0,
-      radius: { 4: 19 },
+      radius: { 20: 30 },
       angle: 45,
       children: {
         shape: "line",
-        radius: 3,
-        scale: 1,
-        stroke: "#FD7932",
+        radius: 9,
+        scale: 2,
+        stroke: getColor(),
         strokeDasharray: "100%",
         strokeDashoffset: { "-100%": "100%" },
-        duration: 700,
+        duration: 800,
         easing: "quad.out",
       },
     });
 
-    burst.tune({ x: e.pageX, y: e.pageY }).replay();
-
     setBalloons((prevBalloons) => prevBalloons.filter((b) => b.id !== id));
+
+    burst.tune({ x: e.pageX, y: e.pageY }).setSpeed(3).replay();
   };
 
   const handleBalloonClick = (e, id) => {
@@ -58,11 +62,12 @@ function App() {
     <Container>
       <Balloons>
         {balloons.map((balloon) => (
-          <SvgContainer rotate={balloon.degree} key={balloon.id}>
-            <BalloonIcon
-              onClick={(e) => handleBalloonClick(e, balloon.id)}
-              rotate={balloon.rotate}
-            />
+          <SvgContainer
+            onClick={(e) => handleBalloonClick(e, balloon.id)}
+            rotate={balloon.degree}
+            key={balloon.id}
+          >
+            <BalloonIcon rotate={balloon.rotate} color={balloon.color} />
           </SvgContainer>
         ))}
       </Balloons>
