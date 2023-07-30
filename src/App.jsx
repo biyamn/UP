@@ -64,7 +64,7 @@ function App() {
         ))}
       </Balloons>
       <House src={houseIcon} onClick={handleHouseClick} alt="하우스" />
-      <Cloud src={cloudIcon} alt="구름" style={{ width: "40%" }} />
+      <Cloud src={cloudIcon} alt="구름" style={{ width: "30%" }} />
     </Container>
   );
 }
@@ -74,16 +74,17 @@ const Container = styled(motion.div)`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 50rem;
 `;
 
 const Balloons = styled(motion.div)`
   display: flex;
   flex-direction: row;
-  height: 60%;
+  height: 15rem;
 `;
 
-const House = styled(motion.img)``;
+const House = styled(motion.img)`
+  width: 20rem;
+`;
 
 const Cloud = styled(motion.img)``;
 
