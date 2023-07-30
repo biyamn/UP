@@ -29,12 +29,14 @@
   - [ ] 가운데 집을 클릭하면 풍선 추가
     - [x] 풍선 고정된 위치에 추가
     - [x] 풍선 랜덤한 위치(x축)에 추가
+    - [ ] 풍선이 굴뚝에서 뻗어나오도록 구현(기울기)
     - [ ] 풍선 랜덤한 위치(x축, y축)에 추가
   - [ ] 풍선이 추가될 때 풍선의 색 랜덤하게 변경
   - [ ] 풍선이 추가될 때 풍선의 모양 랜덤하게 변경
+- [ ] 인터랙션 요소 구현
   - [ ] 풍선 floating 기능 추가
   - [x] 풍선 burst 기능 추가
-- [ ] 인터랙션 요소 구현
+  - [ ] 풍선 터질 시 효과음
   - [ ] 각 풍선에 줄 추가
   - [ ] 풍선 당기고 놓기 기능 추가
 - [ ] 환경 요소 구현
@@ -52,6 +54,7 @@
 - [ ] https://www.jsdelivr.com/package/npm/react-single-balloon(react-single-balloon 라이브러리)
 - [ ] https://github.com/amitvchaudhary/react-single-balloon(react-single-balloon 라이브러리 소스코드)
 - [ ] https://mojs.github.io/tutorials/burst/#burst-2(mo.js Burst)
+- [ ] https://cssgradient.io/(CSS 그라데이션)
 
 ### 로그
 
@@ -67,7 +70,9 @@
   - 레퍼런스 조사
     - react-single-balloon 라이브러리
     - mo.js 라이브러리
+    - css gradient
   - 주요 요소 구현
     - 풍선 랜덤한 위치에 추가 기능
     - 선택한 풍선 삭제 기능
     - mo.js Burst 효과 적용
+    -
