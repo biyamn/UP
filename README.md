@@ -53,7 +53,9 @@
 - [ ] https://www.jsdelivr.com/package/npm/react-single-balloon(react-single-balloon 라이브러리)
 - [ ] https://github.com/amitvchaudhary/react-single-balloon(react-single-balloon 라이브러리 소스코드)
 - [ ] https://mojs.github.io/tutorials/burst/#burst-2(mo.js Burst)
+  - [ ] https://github.com/mojs/mojs/issues/62(element remove 관련 이슈)
 - [ ] https://cssgradient.io/(CSS 그라데이션)
+- [ ] https://github.com/davidmerfield/randomColor(randomcolor 라이브러리)
 
 ### 로그
 
@@ -70,6 +72,7 @@
     - react-single-balloon 라이브러리
     - mo.js 라이브러리
     - css gradient
+    - randomcolor 라이브러리
   - 주요 요소 구현
     - 풍선 랜덤한 위치에 추가 기능
     - 선택한 풍선 삭제 기능
