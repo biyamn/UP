@@ -10,15 +10,19 @@ import mojs from "@mojs/core";
 function App() {
   const [balloons, setBalloons] = useState([]);
 
-  const createBalloon = (x, y) => {
+  const getDegree = () => Math.floor(Math.random() * 90) - 45;
+
+  const createBalloon = () => {
     setBalloons((prevBalloons) => [
       ...prevBalloons,
-      { x, y, id: prevBalloons.length + 1 },
+      {
+        id: prevBalloons.length + 1,
+        degree: getDegree(),
+      },
     ]);
   };
 
   const burst = (e, id) => {
-    console.log("burst!1");
     const burst = new mojs.Burst({
       left: 0,
       top: 0,
@@ -35,36 +39,40 @@ function App() {
         easing: "quad.out",
       },
     });
-    console.log("e: ", e);
+
     burst.tune({ x: e.pageX, y: e.pageY }).replay();
 
     setBalloons((prevBalloons) => prevBalloons.filter((b) => b.id !== id));
-    console.log("burst!2");
   };
 
   const handleBalloonClick = (e, id) => {
     burst(e, id);
   };
 
-  const handleHouseClick = (e) => {
-    const x = e.pageX;
-    const y = e.pageY;
-    createBalloon(x, y);
+  const handleHouseClick = () => {
+    console.log("click");
+    createBalloon();
   };
 
   return (
     <Container>
       <Balloons>
         {balloons.map((balloon) => (
-          <BalloonIcon
-            key={balloon.id}
-            style={{ position: "absolute", left: balloon.x, top: balloon.y }}
-            onClick={(e) => handleBalloonClick(e, balloon.id)}
-          />
+          <SvgContainer rotate={balloon.degree} key={balloon.id}>
+            <BalloonIcon
+              onClick={(e) => handleBalloonClick(e, balloon.id)}
+              rotate={balloon.rotate}
+            />
+          </SvgContainer>
         ))}
       </Balloons>
-      <House src={houseIcon} onClick={handleHouseClick} alt="하우스" />
-      <Cloud src={cloudIcon} alt="구름" style={{ width: "30%" }} />
+      <img
+        src={houseIcon}
+        onClick={handleHouseClick}
+        alt="하우스"
+        width="200rem"
+      />
+      <img src={cloudIcon} alt="구름" width="400rem" />
     </Container>
   );
 }
@@ -74,18 +82,23 @@ const Container = styled(motion.div)`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  height: 100vh;
+  gap: 1rem;
 `;
 
 const Balloons = styled(motion.div)`
   display: flex;
   flex-direction: row;
   height: 15rem;
+  position: relative;
 `;
 
-const House = styled(motion.img)`
-  width: 20rem;
+const SvgContainer = styled(motion.div)`
+  position: absolute;
+  top: 4rem;
+  left: -2rem;
+  transform-origin: bottom;
+  transform: rotate(${({ rotate }) => rotate}deg);
 `;
-
-const Cloud = styled(motion.img)``;
 
 export default App;
