@@ -1,17 +1,23 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { motion } from "framer-motion";
 import BalloonIcon from "./components/BalloonIcon";
 import houseIcon from "./assets/house_pixel.png";
 import cloudIcon from "./assets/cloud_pixel.png";
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import mojs from "@mojs/core";
 import randomColor from "randomcolor";
 
 // 이곳에 모두 구현 후 분리 예정
 function App() {
   const [balloons, setBalloons] = useState([]);
+  const houseRef = useRef(null);
 
-  const getDegree = () => Math.floor(Math.random() * 90) - 45;
+  const getDegree = () => {
+    const interval = 10;
+    const randomDegree = Math.floor(Math.random() * 90) - 45;
+    const adjustedDegree = Math.floor(randomDegree / interval) * interval;
+    return adjustedDegree;
+  };
 
   const getColor = () => randomColor();
 
@@ -60,6 +66,10 @@ function App() {
     createBalloon();
   };
 
+  console.log("houseRef", houseRef);
+  console.log("houseRef.current", houseRef.current);
+  console.log("houseRef.current.offsetLeft", houseRef.current?.offsetLeft);
+
   return (
     <Container>
       <Balloons>
@@ -69,7 +79,9 @@ function App() {
             rotate={balloon.degree}
             key={balloon.id}
           >
-            <BalloonIcon rotate={balloon.rotate} color={balloon.color} />
+            <Animated>
+              <BalloonIcon rotate={balloon.rotate} color={balloon.color} />
+            </Animated>
           </SvgContainer>
         ))}
       </Balloons>
@@ -78,8 +90,11 @@ function App() {
         onClick={handleHouseClick}
         alt="하우스"
         width="200rem"
+        ref={houseRef}
       />
-      <img src={cloudIcon} alt="구름" width="400rem" />
+      <CloudAnimated>
+        <img src={cloudIcon} alt="구름" width="400rem" />
+      </CloudAnimated>
     </Container>
   );
 }
@@ -98,6 +113,38 @@ const Balloons = styled(motion.div)`
   flex-direction: row;
   height: 15rem;
   position: relative;
+`;
+
+const moveVertical = keyframes`
+  0% { transform: translate(0,  0px); }
+  50%  { transform: translate(0, 15px); }
+  100%   { transform: translate(0, -0px); }  
+`;
+
+const Animated = styled(motion.div)`
+  animation-name: floating;
+  animation-duration: 3s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+  margin-left: 30px;
+  margin-top: 5px;
+  animation: ${moveVertical} 2s 1s infinite;
+`;
+
+const moveHorizontal = keyframes`
+  0% { transform: translate(0px,  0); }
+  50%  { transform: translate(15px, 0); }
+  100%   { transform: translate(-0px, 0); }  
+`;
+
+const CloudAnimated = styled(motion.div)`
+  animation-name: floating;
+  animation-duration: 3s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+  margin-left: 5px;
+  margin-top: 30px;
+  animation: ${moveHorizontal} 2s 1s infinite;
 `;
 
 const SvgContainer = styled(motion.div)`
