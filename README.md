@@ -2,6 +2,10 @@
 
 필수과제와 선택과제 구현하기(1~3단계 또는 1~4단계)
 
+## 설명
+
+up 테마
+
 ### 배포 URL
 
 ### 기술 스택 및 라이브러리
@@ -34,29 +38,35 @@
   - [x] 풍선이 추가될 때 풍선의 색 랜덤하게 변경
   - [ ] 풍선이 추가될 때 풍선의 모양 랜덤하게 변경
 - [ ] 인터랙션 요소 구현
-  - [ ] 풍선 floating 기능 추가
+  - [x] 풍선 floating 기능(수직) 추가
+  - [x] 구름 floating 기능(수평) 추가
   - [x] 풍선 burst 기능 추가
+  - [x] 풍선 burst 시 풍선 색과 동일하도록
   - [ ] 풍선 터질 시 효과음
   - [x] 각 풍선에 줄 추가
   - [ ] 풍선 당기고 놓기 기능 추가
 - [ ] 환경 요소 구현
   - [ ] 하늘 배경 이미지 추가
   - [ ] 배경 이미지에 움직이는 구름 추가
+- [ ] 코드 리팩토링
+  - [ ] 컴포넌트 분리
+  - [ ] 컴포넌트 메모이제이션(풍선 리렌더 방지)
 
 ### 레퍼런스
 
-- [ ] https://codesandbox.io/examples/package/react-floating-balloons(CSS)
-- [ ] https://codepen.io/Jemimaabu/pen/vYEYdOy(CSS)
-- [ ] https://codesandbox.io/s/dank-pond-ppl0nk?file=/src/App.tsx(리액트 라이브러리)
-- [ ] https://www.geeksforgeeks.org/css-floating-animation/(CSS Floating)
-- [ ] https://yrnana.dev/post/2021-02-13-framer-motion-react-motion-gesture/(framer-motion 라이브러리)
-- [ ] https://www.framer.com/motion/(framer-motion 공식 라이브러리)
-- [ ] https://www.jsdelivr.com/package/npm/react-single-balloon(react-single-balloon 라이브러리)
-- [ ] https://github.com/amitvchaudhary/react-single-balloon(react-single-balloon 라이브러리 소스코드)
-- [ ] https://mojs.github.io/tutorials/burst/#burst-2(mo.js Burst)
-  - [ ] https://github.com/mojs/mojs/issues/11(element remove 관련 이슈)
-- [ ] https://cssgradient.io/(CSS 그라데이션)
-- [ ] https://github.com/davidmerfield/randomColor(randomcolor 라이브러리)
+- https://codesandbox.io/examples/package/react-floating-balloons(CSS)
+- https://codepen.io/Jemimaabu/pen/vYEYdOy(CSS)
+- https://codesandbox.io/s/dank-pond-ppl0nk?file=/src/App.tsx(리액트 라이브러리)
+- https://www.geeksforgeeks.org/css-floating-animation/(CSS Floating)
+- https://yrnana.dev/post/2021-02-13-framer-motion-react-motion-gesture/(framer-motion 라이브러리)
+- https://www.framer.com/motion/(framer-motion 공식 라이브러리)
+- https://www.jsdelivr.com/package/npm/react-single-balloon(react-single-balloon 라이브러리)
+- https://github.com/amitvchaudhary/react-single-balloon(react-single-balloon 라이브러리 소스코드)
+- https://mojs.github.io/tutorials/burst/#burst-2(mo.js Burst)
+  - https://github.com/mojs/mojs/issues/11(element remove 관련 이슈)
+- https://cssgradient.io/(CSS 그라데이션)
+- https://github.com/davidmerfield/randomColor(randomcolor 라이브러리)
+- https://velog.io/@cada/HTML-%EC%9A%94%EC%86%8C%EC%9D%98-%ED%81%AC%EA%B8%B0%EC%9C%84%EC%B9%98%EB%A5%BC-%EC%95%8C%EC%95%84%EB%82%B4%EB%8A%94-%EB%B0%A9%EB%B2%95#offsetwidth--offsetheight
 
 ### 로그
 
@@ -78,12 +88,13 @@
     - 풍선 랜덤한 위치에 추가 기능
     - 선택한 풍선 삭제 기능
     - mo.js Burst 효과 적용
-    -
 - 2023/07/31
   - 레퍼런스 조사
     - React Confetti Explosion 라이브러리
   - 주요 요소 구현
-    - 풍선이 추가될 때 풍선의 모양 랜덤하게 변경
-  - ## 인터랙션 구현
+    - 폰트 추가
+  - 인터랙션 구현
+    - 풍선 floating 기능(수직) 추가
+    - 구름 floating 기능(수평) 추가
   - 시행착오
     - mo.js 라이브러리 오류 해결
