@@ -20,7 +20,12 @@ function App() {
   };
 
   const getColor = () => randomColor();
-  const shapeArray = ["ordinary", "square", "triangle"];
+  const getShape = () => {
+    const shapeArray = ["noLine", "line", "pink"];
+    const randomIndex = Math.floor(Math.random() * shapeArray.length);
+    return shapeArray[randomIndex];
+  };
+
   const createBalloon = () => {
     setBalloons((prevBalloons) => [
       ...prevBalloons,
@@ -28,7 +33,7 @@ function App() {
         id: prevBalloons.length + 1,
         degree: getDegree(),
         color: getColor(),
-        shape: "",
+        shape: getShape(),
       },
     ]);
   };
@@ -76,7 +81,11 @@ function App() {
             key={balloon.id}
           >
             <Animated>
-              <BalloonImage rotate={balloon.rotate} color={balloon.color} />
+              <BalloonImage
+                shape={balloon.shape}
+                rotate={balloon.rotate}
+                color={balloon.color}
+              />
             </Animated>
           </SvgContainer>
         ))}
