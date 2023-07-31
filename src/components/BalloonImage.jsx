@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import React from "react";
 
-const BalloonIcon = ({ color }) => {
+const BalloonImage = ({ color }) => {
   return (
     <svg
       width="60"
@@ -17,4 +17,4 @@ const BalloonIcon = ({ color }) => {
   );
 };
 
-export default BalloonIcon;
+export default BalloonImage;

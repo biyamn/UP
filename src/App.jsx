@@ -1,8 +1,8 @@
 import React, { useState, useRef } from "react";
 import { motion } from "framer-motion";
-import BalloonIcon from "./components/BalloonIcon";
-import houseIcon from "./assets/house_pixel.png";
-import cloudIcon from "./assets/cloud_pixel.png";
+import BalloonImage from "./components/BalloonImage";
+import houseImage from "./assets/house.png";
+import cloudImage from "./assets/cloud.png";
 import styled, { keyframes } from "styled-components";
 import mojs from "@mojs/core";
 import randomColor from "randomcolor";
@@ -20,7 +20,7 @@ function App() {
   };
 
   const getColor = () => randomColor();
-
+  const shapeArray = ["ordinary", "square", "triangle"];
   const createBalloon = () => {
     setBalloons((prevBalloons) => [
       ...prevBalloons,
@@ -28,6 +28,7 @@ function App() {
         id: prevBalloons.length + 1,
         degree: getDegree(),
         color: getColor(),
+        shape: "",
       },
     ]);
   };
@@ -75,20 +76,20 @@ function App() {
             key={balloon.id}
           >
             <Animated>
-              <BalloonIcon rotate={balloon.rotate} color={balloon.color} />
+              <BalloonImage rotate={balloon.rotate} color={balloon.color} />
             </Animated>
           </SvgContainer>
         ))}
       </Balloons>
       <img
-        src={houseIcon}
+        src={houseImage}
         onClick={handleHouseClick}
         alt="하우스"
         width="200rem"
         ref={houseRef}
       />
       <CloudAnimated>
-        <img src={cloudIcon} alt="구름" width="400rem" />
+        <img src={cloudImage} alt="구름" width="400rem" />
       </CloudAnimated>
     </Container>
   );
