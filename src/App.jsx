@@ -62,13 +62,8 @@ function App() {
   };
 
   const handleHouseClick = () => {
-    console.log("click");
     createBalloon();
   };
-
-  console.log("houseRef", houseRef);
-  console.log("houseRef.current", houseRef.current);
-  console.log("houseRef.current.offsetLeft", houseRef.current?.offsetLeft);
 
   return (
     <Container>
