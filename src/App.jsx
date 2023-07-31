@@ -30,17 +30,19 @@ function App() {
     const burst = new mojs.Burst({
       left: 0,
       top: 0,
-      radius: { 20: 30 },
       angle: 45,
       children: {
         shape: "line",
-        radius: 9,
+        radius: { 2: 5 },
         scale: 2,
-        stroke: getColor(),
+        stroke: balloons.find((balloon) => balloon.id === id).color,
         strokeDasharray: "100%",
         strokeDashoffset: { "-100%": "100%" },
-        duration: 800,
+        duration: 700,
         easing: "quad.out",
+        onComplete: () => {
+          burst.el.remove();
+        },
       },
     });
 
