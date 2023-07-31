@@ -89,7 +89,7 @@ function App() {
         ref={houseRef}
       />
       <CloudAnimated>
-        <img src={cloudImage} alt="구름" width="400rem" />
+        <img src={cloudImage} alt="구름" width="300rem" />
       </CloudAnimated>
     </Container>
   );
