@@ -71,6 +71,8 @@ function App() {
     createBalloon();
   };
 
+  console.log(houseRef.current?.offsetWidth);
+
   return (
     <Container>
       <Balloons>
@@ -96,6 +98,7 @@ function App() {
         alt="하우스"
         width="200rem"
         ref={houseRef}
+        style={{ zIndex: 1 }}
       />
       <CloudAnimated>
         <img src={cloudImage} alt="구름" width="300rem" />
@@ -154,10 +157,12 @@ const CloudAnimated = styled(motion.div)`
 
 const SvgContainer = styled(motion.div)`
   position: absolute;
-  top: 4rem;
-  left: -2rem;
-  transform-origin: bottom;
   transform: rotate(${({ rotate }) => rotate}deg);
+  transform-origin: bottom;
+  // top: 0;
+  // left: 0;
+  // top: houseRef.current?.offsetWidth
+  // left: houseRef.current?.offsetWidth
 `;
 
 export default App;
