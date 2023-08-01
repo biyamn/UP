@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { motion } from "framer-motion";
 import BalloonImage from "./components/BalloonImage";
 import houseImage from "./assets/house.png";
@@ -71,7 +71,39 @@ function App() {
     createBalloon();
   };
 
-  console.log(houseRef.current?.offsetWidth);
+  // const balloonLocationTop = houseRef.current?.offsetTop;
+  // const balloonLocationLeft = houseRef.current?.offsetLeft;
+  const location = houseRef.current?.getBoundingClientRect();
+  const balloonLocationTop =
+    window.innerHeight - location?.top - houseRef.current?.offsetWidth;
+  const balloonLocationLeft = location?.left;
+
+  useEffect(() => {
+    // console.log(
+    //   "houseRef.current.offsetWidth: ",
+    //   houseRef.current?.offsetWidth // 200
+    // );
+    // console.log(
+    //   "houseRef.current.offsetHeight: ",
+    //   houseRef.current?.offsetHeight // 192
+    // );
+    // console.log(
+    //   "window.innerWidth: ",
+    //   window.innerWidth // 1298 ... 등
+    // );
+    // console.log(
+    //   "window.innerHeight:  ",
+    //   window.innerHeight // 837 ... 등
+    // );
+    // console.log(
+    //   (window.innerHeight - houseRef.current?.offsetHeight) / 2,
+    //   (window.innerWidth - houseRef.current?.offsetWidth) / 2
+    // );
+    // console.log(
+    //   houseRef.current?.offsetTop(window.innerWidth / 2) +
+    //     houseRef.current?.offsetWidth / 2
+    // );
+  });
 
   return (
     <Container>
@@ -81,6 +113,8 @@ function App() {
             onClick={(e) => handleBalloonClick(e, balloon.id)}
             rotate={balloon.degree}
             key={balloon.id}
+            top={balloonLocationTop}
+            left={balloonLocationLeft}
           >
             <Animated>
               <BalloonImage
@@ -113,14 +147,15 @@ const Container = styled(motion.div)`
   align-items: center;
   justify-content: center;
   height: 100vh;
+
   gap: 1rem;
+  position: relative;
 `;
 
 const Balloons = styled(motion.div)`
   display: flex;
   flex-direction: row;
   height: 15rem;
-  position: relative;
 `;
 
 const moveVertical = keyframes`
@@ -159,10 +194,11 @@ const SvgContainer = styled(motion.div)`
   position: absolute;
   transform: rotate(${({ rotate }) => rotate}deg);
   transform-origin: bottom;
-  // top: 0;
-  // left: 0;
-  // top: houseRef.current?.offsetWidth
-  // left: houseRef.current?.offsetWidth
+  // top이 뭔지 모름!! prop으로 받은 것을! 넘겨줘야 함!
+  top: ${({ top }) => top}px;
+  left: ${({ left }) => left}px;
+  // top: houseRef.current.offsetWidth;
+  // left: houseRef.current.offsetWidth;
 `;
 
 export default App;
