@@ -7,10 +7,10 @@ import styled, { keyframes } from "styled-components";
 import mojs from "@mojs/core";
 import randomColor from "randomcolor";
 
-// 이곳에 모두 구현 후 분리 예정
 function App() {
   const [balloons, setBalloons] = useState([]);
   const houseRef = useRef(null);
+  const balloonsRef = useRef(null);
 
   const getDegree = () => {
     const interval = 10;
@@ -71,77 +71,46 @@ function App() {
     createBalloon();
   };
 
-  // const balloonLocationTop = houseRef.current?.offsetTop;
-  // const balloonLocationLeft = houseRef.current?.offsetLeft;
-  const location = houseRef.current?.getBoundingClientRect();
-  const balloonLocationTop =
-    window.innerHeight - location?.top - houseRef.current?.offsetWidth;
-  const balloonLocationLeft = location?.left;
-
-  useEffect(() => {
-    // console.log(
-    //   "houseRef.current.offsetWidth: ",
-    //   houseRef.current?.offsetWidth // 200
-    // );
-    // console.log(
-    //   "houseRef.current.offsetHeight: ",
-    //   houseRef.current?.offsetHeight // 192
-    // );
-    // console.log(
-    //   "window.innerWidth: ",
-    //   window.innerWidth // 1298 ... 등
-    // );
-    // console.log(
-    //   "window.innerHeight:  ",
-    //   window.innerHeight // 837 ... 등
-    // );
-    // console.log(
-    //   (window.innerHeight - houseRef.current?.offsetHeight) / 2,
-    //   (window.innerWidth - houseRef.current?.offsetWidth) / 2
-    // );
-    // console.log(
-    //   houseRef.current?.offsetTop(window.innerWidth / 2) +
-    //     houseRef.current?.offsetWidth / 2
-    // );
-  });
+  const negativeMargin = 40;
+  const balloonsTop = -balloonsRef.current?.offsetHeight + negativeMargin;
+  const balloonsLeft = houseRef.current?.offsetWidth / 2;
 
   return (
-    <Container>
-      <Balloons>
-        {balloons.map((balloon) => (
-          <SvgContainer
-            onClick={(e) => handleBalloonClick(e, balloon.id)}
-            rotate={balloon.degree}
-            key={balloon.id}
-            top={balloonLocationTop}
-            left={balloonLocationLeft}
-          >
-            <Animated>
-              <BalloonImage
-                shape={balloon.shape}
-                rotate={balloon.rotate}
-                color={balloon.color}
-              />
-            </Animated>
-          </SvgContainer>
-        ))}
-      </Balloons>
-      <img
-        src={houseImage}
-        onClick={handleHouseClick}
-        alt="하우스"
-        width="200rem"
-        ref={houseRef}
-        style={{ zIndex: 1 }}
-      />
+    <Background>
+      <Container>
+        <Balloons top={balloonsTop} left={balloonsLeft} ref={balloonsRef}>
+          {balloons.map((balloon) => (
+            <SvgContainer
+              onClick={(e) => handleBalloonClick(e, balloon.id)}
+              rotate={balloon.degree}
+              key={balloon.id}
+            >
+              <Animated>
+                <BalloonImage
+                  shape={balloon.shape}
+                  rotate={balloon.rotate}
+                  color={balloon.color}
+                />
+              </Animated>
+            </SvgContainer>
+          ))}
+        </Balloons>
+        <HouseImage
+          src={houseImage}
+          onClick={handleHouseClick}
+          alt="하우스"
+          width="200rem"
+          ref={houseRef}
+        />
+      </Container>
       <CloudAnimated>
         <img src={cloudImage} alt="구름" width="300rem" />
       </CloudAnimated>
-    </Container>
+    </Background>
   );
 }
 
-const Container = styled(motion.div)`
+const Background = styled(motion.div)`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -152,10 +121,23 @@ const Container = styled(motion.div)`
   position: relative;
 `;
 
+const Container = styled.div`
+  position: relative;
+`;
+
 const Balloons = styled(motion.div)`
+  position: absolute;
+  top: ${({ top }) => top}px;
+  left: ${({ left }) => left}px;
   display: flex;
   flex-direction: row;
   height: 15rem;
+  z-index: 0;
+`;
+
+const HouseImage = styled.img`
+  position: relative;
+  z-index: 10;
 `;
 
 const moveVertical = keyframes`
@@ -192,13 +174,10 @@ const CloudAnimated = styled(motion.div)`
 
 const SvgContainer = styled(motion.div)`
   position: absolute;
+  // svgContainer width의 절반 정도
+  left: -70px;
   transform: rotate(${({ rotate }) => rotate}deg);
   transform-origin: bottom;
-  // top이 뭔지 모름!! prop으로 받은 것을! 넘겨줘야 함!
-  top: ${({ top }) => top}px;
-  left: ${({ left }) => left}px;
-  // top: houseRef.current.offsetWidth;
-  // left: houseRef.current.offsetWidth;
 `;
 
 export default App;
