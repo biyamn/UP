@@ -1,8 +1,8 @@
 import React from "react";
-import BalloonHeart from "../assets/BalloonHeart";
-import BalloonPink from "../assets/BalloonPink";
-import BalloonLine from "../assets/BalloonLine";
-import BalloonNoLine from "../assets/BalloonNoLine";
+import BalloonHeart from "../../public/images/BalloonHeart";
+import BalloonPink from "../../public/images/BalloonPink";
+import BalloonLine from "../../public/images/BalloonLine";
+import BalloonNoLine from "../../public/images/BalloonNoLine";
 
 const BalloonImage = ({ color, shape }) => {
   switch (shape) {
