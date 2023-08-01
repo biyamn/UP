@@ -54,7 +54,7 @@ function App() {
         />
       </Container>
       <CloudAnimated>
-        <img src={cloudImage} alt="구름" width="300px" />
+        <CloudImage src={cloudImage} alt="구름" width="300px" />
       </CloudAnimated>
     </Background>
   );
@@ -80,6 +80,7 @@ const Container = styled.div`
 `;
 
 const HouseImage = styled.img`
+  user-select: none;
   position: relative;
   z-index: 10;
 `;
@@ -98,6 +99,10 @@ const CloudAnimated = styled(motion.div)`
   margin-left: 5px;
   margin-top: 30px;
   animation: ${moveHorizontal} 2s 1s infinite;
+`;
+
+const CloudImage = styled.img`
+  user-select: none;
 `;
 
 export default App;
