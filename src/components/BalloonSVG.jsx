@@ -4,7 +4,7 @@ import BalloonPink from "../../public/images/BalloonPink";
 import BalloonLine from "../../public/images/BalloonLine";
 import BalloonNoLine from "../../public/images/BalloonNoLine";
 
-const BalloonImage = ({ color, shape }) => {
+const BalloonSVG = ({ color, shape }) => {
   switch (shape) {
     case "heart":
       return <BalloonHeart />;
@@ -18,4 +18,4 @@ const BalloonImage = ({ color, shape }) => {
   }
 };
 
-export default BalloonImage;
+export default BalloonSVG;

@@ -1,5 +1,5 @@
 import React, { forwardRef } from "react";
-import BalloonImage from "./BalloonImage";
+import BalloonSVG from "./BalloonSVG";
 import mojs from "@mojs/core";
 import { motion } from "framer-motion";
 import { styled, keyframes } from "styled-components";
@@ -67,6 +67,10 @@ const Balloons = forwardRef((props, ref) => {
     </Container>
   );
 });
+
+const BalloonImage = styled(BalloonSVG)`
+  user-select: none;
+`;
 
 const Container = styled.div`
   position: absolute;
