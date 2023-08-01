@@ -61,6 +61,7 @@ function App() {
 }
 
 const Background = styled(motion.div)`
+  padding-top: 20rem;
   display: flex;
   flex-direction: column;
   align-items: center;
