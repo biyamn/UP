@@ -32,7 +32,7 @@ up 테마
     - [x] 삭제시 다른 풍선에 영향 안받도록 변경
     - [x] burst 효과 후 지워지지 않은 DOM 삭제
   - [x] 가운데 집을 클릭하면 풍선 생성
-    - [ ] 풍선 고정된 위치(굴뚝)에 생성
+    - [x] 풍선 고정된 위치(굴뚝)에 생성
     - [x] 풍선들이 모아지는 중심점 생성
     - [x] 집 뒤에 풍선 위치시키기
     - [x] 풍선 랜덤한 기울기로 생성
@@ -51,8 +51,10 @@ up 테마
   - [x] 하늘 배경 이미지 추가
   - [ ] 배경에 이미지, gif 등 꾸밈 요소 추가
 - [ ] 코드 리팩토링
-  - [ ] 컴포넌트 분리
+  - [x] 컴포넌트 분리
   - [ ] 컴포넌트 메모이제이션(풍선 리렌더 방지)
+  - [x] styles 파일 분리
+  - [x] utils 파일 분리
 
 ### 레퍼런스
 
@@ -72,6 +74,7 @@ up 테마
 - https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/offsetWidth(offsetWidth mdn 문서)
 - https://int-i.github.io/web/2022-06-20/css-img-svg-color/(css로 sgv 색 바꾸는 법)
 - https://wazacs.tistory.com/37(react draggable 라이브러리)
+- https://pottatt0.tistory.com/entry/eslint-ERROR-forwardRef-Component-definition-is-missing-display-nameeslintreactdisplay-name(forwardRef 오류)
 
 ### 로그
 
@@ -102,15 +105,20 @@ up 테마
     - 풍선 floating 기능(수직) 추가
     - 구름 floating 기능(수평) 추가
   - 시행착오
-    - mo.js 라이브러리 오류 해결
-- 2023/08/01(예정)
+    - mo.js 라이브러리 오류
+    - floating 구현: transform과 animation 함께 쓰기
+- 2023/08/01
+  - 코드 리팩토링
+    - styles 파일 분리
+    - utils 파일 분리
+    - 컴포넌트 분리
   - 주요 요소 구현
-    - 풍선 고정된 위치(굴뚝)에 생성 🍀
-    - 풍선 svg 색 커스텀(테두리X, gradient) 🍀
+    - 풍선 고정된 위치(굴뚝)에 생성
+    - 풍선 svg 색 커스텀(테두리X, gradient) 📝
   - 인터랙션 구현
-    - 풍선 당기고 놓기 기능 추가 🍀
-  - 환경 요소 구현
-    - 하늘 배경 이미지 추가 🍀
-    - 배경에 이미지, gif 등 꾸밈 요소 추가 🍀
-- 2023/08/02(예정)
-  - 코드 리팩토링 🍀
+    - 풍선 당기고 놓기 기능 추가 📝
+  - 시행착오
+    - 풍선 위치 고정: position(relative, absolute)
+- 2023/08/02
+  - 코드 리팩토링
+  - 인터랙션
