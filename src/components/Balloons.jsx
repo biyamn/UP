@@ -45,13 +45,23 @@ const Balloons = forwardRef((props, ref) => {
           rotate={balloon.degree}
           key={balloon.id}
         >
-          <BalloonAnimated>
-            <BalloonImage
-              shape={balloon.shape}
-              rotate={balloon.rotate}
-              color={balloon.color}
-            />
-          </BalloonAnimated>
+          <motion.div
+            drag
+            dragConstraints={{
+              top: 0,
+              left: 0,
+              right: 0,
+              bottom: 0,
+            }}
+          >
+            <BalloonAnimated>
+              <BalloonImage
+                shape={balloon.shape}
+                rotate={balloon.rotate}
+                color={balloon.color}
+              />
+            </BalloonAnimated>
+          </motion.div>
         </SvgContainer>
       ))}
     </Container>
