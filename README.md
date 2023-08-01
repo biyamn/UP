@@ -14,7 +14,6 @@ up 테마
 - React.js(확정)
 - styled-components(확정)
 - framer-motion
-- chakra-ui
 - mojs(확정)
 
 ### 구현 기능 목록
@@ -63,6 +62,7 @@ up 테마
 - https://codesandbox.io/s/dank-pond-ppl0nk?file=/src/App.tsx(리액트 라이브러리)
 - https://www.geeksforgeeks.org/css-floating-animation/(CSS Floating)
 - https://yrnana.dev/post/2021-02-13-framer-motion-react-motion-gesture/(framer-motion 라이브러리)
+- https://www.framer.com/motion/gestures/#drag(framer-motion drag부분)
 - https://www.framer.com/motion/(framer-motion 공식 라이브러리)
 - https://www.jsdelivr.com/package/npm/react-single-balloon(react-single-balloon 라이브러리)
 - https://github.com/amitvchaudhary/react-single-balloon(react-single-balloon 라이브러리 소스코드)
@@ -116,7 +116,8 @@ up 테마
     - 풍선 고정된 위치(굴뚝)에 생성
     - 풍선 svg 색 커스텀(테두리X, gradient) 📝
   - 인터랙션 구현
-    - 풍선 당기고 놓기 기능 추가 📝
+    - 풍선 드래그 기능 추가 📝
+    - 풍선 드래그 버그 해결
   - 시행착오
     - 풍선 위치 고정: position(relative, absolute)
 - 2023/08/02
