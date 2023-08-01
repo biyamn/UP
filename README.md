@@ -49,7 +49,7 @@ up 테마
   - [ ] 풍선 당기고 놓기 기능 추가
 - [ ] 환경 요소 구현
   - [x] 하늘 배경 이미지 추가
-  - [ ] 배경 이미지에 움직이는 구름 추가
+  - [ ] 배경에 이미지, gif 등 꾸밈 요소 추가
 - [ ] 코드 리팩토링
   - [ ] 컴포넌트 분리
   - [ ] 컴포넌트 메모이제이션(풍선 리렌더 방지)
@@ -69,6 +69,7 @@ up 테마
 - https://cssgradient.io/(CSS 그라데이션)
 - https://github.com/davidmerfield/randomColor(randomcolor 라이브러리)
 - https://velog.io/@cada/HTML-%EC%9A%94%EC%86%8C%EC%9D%98-%ED%81%AC%EA%B8%B0%EC%9C%84%EC%B9%98%EB%A5%BC-%EC%95%8C%EC%95%84%EB%82%B4%EB%8A%94-%EB%B0%A9%EB%B2%95#offsetwidth--offsetheight(HTML 요소의 크기/위치 알아내는 법)
+- https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/offsetWidth(offsetWidth mdn 문서)
 - https://int-i.github.io/web/2022-06-20/css-img-svg-color/(css로 sgv 색 바꾸는 법)
 - https://wazacs.tistory.com/37(react draggable 라이브러리)
 
@@ -103,6 +104,13 @@ up 테마
   - 시행착오
     - mo.js 라이브러리 오류 해결
 - 2023/08/01(예정)
-  - 인터랙션 요소 혹은 환경 요소 추가
+  - 주요 요소 구현
+    - 풍선 고정된 위치(굴뚝)에 생성 🍀
+    - 풍선 svg 색 커스텀(테두리X, gradient) 🍀
+  - 인터랙션 구현
+    - 풍선 당기고 놓기 기능 추가 🍀
+  - 환경 요소 구현
+    - 하늘 배경 이미지 추가 🍀
+    - 배경에 이미지, gif 등 꾸밈 요소 추가 🍀
 - 2023/08/02(예정)
-  - 코드 리팩토링
+  - 코드 리팩토링 🍀
