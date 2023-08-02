@@ -32,14 +32,6 @@ const Balloons = forwardRef((props, ref) => {
     burst.tune({ x: e.pageX, y: e.pageY }).setSpeed(2).replay();
   };
 
-  const cut = (id) => {
-    setBalloons((prevBalloons) =>
-      prevBalloons.map((balloon) =>
-        balloon.id === id ? { ...balloon, isTied: false } : balloon
-      )
-    );
-  };
-
   const handleBalloonClick = (e, id) => {
     burst(e, id);
   };

@@ -22,7 +22,6 @@ function App() {
         degree: getRandomDegree(),
         color: getRandomColor(),
         shape: getRandomShape(),
-        isTied: true,
       },
     ]);
   };
@@ -72,10 +71,13 @@ function App() {
         />
       </Container>
       <ButtonContainer>
-        <Button onClick={handleButtonClick}>
+        <Button
+          onClick={handleButtonClick}
+          $isActive={cursorStatus === "default"}
+        >
           <span>터뜨리기</span>
         </Button>
-        <Button onClick={handleBallonCut}>
+        <Button onClick={handleBallonCut} $isActive={cursorStatus === "cut"}>
           <span>날리기</span>
         </Button>
       </ButtonContainer>
@@ -96,7 +98,7 @@ const Button = styled.button`
   height: 40px;
   border-radius: 5px;
   padding: 10px 25px;
-  background: transparent;
+  /* background: transparent; */
   cursor: pointer;
   transition: all 0.3s ease;
   position: relative;
@@ -164,6 +166,7 @@ const Button = styled.button`
   span:hover:after {
     width: 100%;
   }
+  ${({ $isActive }) => ($isActive ? "" : "background: transparent")}
 `;
 
 const Background = styled(motion.div)`
