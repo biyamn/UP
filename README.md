@@ -10,11 +10,11 @@ up 테마
 
 ### 기술 스택 및 라이브러리
 
-- HTML/CSS, JavaScript(확정)
-- React.js(확정)
-- styled-components(확정)
+- HTML/CSS, JavaScript
+- React.js
+- styled-components
 - framer-motion
-- mojs(확정)
+- mojs
 
 ### 구현 기능 목록
 
@@ -39,13 +39,19 @@ up 테마
   - [x] 풍선이 추가될 때 풍선의 모양 랜덤하게 변경
   - [ ] 풍선 svg 색 커스텀(테두리X, gradient)
 - [ ] 인터랙션 요소 구현
-  - [x] 풍선 floating 기능(수직) 추가
-  - [x] 구름 floating 기능(수평) 추가
-  - [x] 풍선 burst 기능 추가
+  - [x] 풍선 floating 기능(수직) 구현
+  - [x] 구름 floating 기능(수평) 구현
+  - [x] 풍선 burst 기능 구현
   - [x] 풍선 burst 시 풍선 색과 동일하도록
+  - [x] 풍선줄 자르기 기능 구현
+    - [x] 일반/자르기 버튼 추가
+    - [x] 가위 모드로 전환시 풍선줄 자르기
+    - [x] 풍선줄을 자르면 풍선은 날아가는 효과 구현
+  - [x] 풍선 개수에 따라 집 상하 이동
+    - [x] 20개 제한
   - [ ] 풍선 터질 시 효과음
   - [x] 각 풍선에 줄 추가
-  - [ ] 풍선 당기고 놓기 기능 추가
+  - [x] 풍선 당기고 놓기 기능 구현
 - [ ] 환경 요소 구현
   - [x] 하늘 배경 이미지 추가
   - [ ] 배경에 이미지, gif 등 꾸밈 요소 추가
@@ -75,6 +81,7 @@ up 테마
 - https://int-i.github.io/web/2022-06-20/css-img-svg-color/(css로 sgv 색 바꾸는 법)
 - https://wazacs.tistory.com/37(react draggable 라이브러리)
 - https://pottatt0.tistory.com/entry/eslint-ERROR-forwardRef-Component-definition-is-missing-display-nameeslintreactdisplay-name(forwardRef 오류)
+- https://www.framer.com/motion/animate-presence/(풍선 위로 올라가기 효과)
 
 ### 로그
 
@@ -93,7 +100,7 @@ up 테마
     - css gradient
     - randomcolor 라이브러리
   - 주요 요소 구현
-    - 풍선 랜덤한 위치에 추가 기능
+    - 풍선 랜덤한 위치에 추가하는 기능 구현
     - 선택한 풍선 삭제 기능
     - mo.js Burst 효과 적용
 - 2023/07/31
@@ -102,10 +109,10 @@ up 테마
   - 주요 요소 구현
     - 폰트 추가
   - 인터랙션 구현
-    - 풍선 floating 기능(수직) 추가
-    - 구름 floating 기능(수평) 추가
+    - 풍선 floating 기능(수직) 구현
+    - 구름 floating 기능(수평) 구현
   - 시행착오
-    - mo.js 라이브러리 오류
+    - burst 효과 후 남은 DOM 잔류 오류 해결(mo.js 라이브러리 onComplete 옵션)
     - floating 구현: transform과 animation 함께 쓰기
 - 2023/08/01
   - 코드 리팩토링
@@ -114,12 +121,17 @@ up 테마
     - 컴포넌트 분리
   - 주요 요소 구현
     - 풍선 고정된 위치(굴뚝)에 생성
-    - 풍선 svg 색 커스텀(테두리X, gradient) 📝
   - 인터랙션 구현
-    - 풍선 드래그 기능 추가 📝
-    - 풍선 드래그 버그 해결
+    - 풍선 드래그 기능 구현
   - 시행착오
     - 풍선 위치 고정: position(relative, absolute)
 - 2023/08/02
-  - 코드 리팩토링
-  - 인터랙션
+  - 인터랙션 구현
+    - 풍선줄 자르기 기능 구현
+      - 일반/자르기 버튼 추가
+      - 가위 모드로 전환시 풍선줄 자르기 기능 구현
+      - 풍선줄을 자르면 풍선은 날아가는 효과 구현
+    - 풍선 개수에 따라 집 상하 이동
+      - 풍선 20개 제한
+  - 시행착오
+    - 풍선 드래그 버그 해결(framer-motion 라이브러리 dragSnapToOrigin 옵션)
