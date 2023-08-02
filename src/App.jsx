@@ -71,25 +71,108 @@ function App() {
           $houseFlyHeight={houseFlyHeight}
         />
       </Container>
-      <Button onClick={handleButtonClick}>일반</Button>
-      <Button onClick={handleBallonCut}>컷</Button>
+      <ButtonContainer>
+        <Button onClick={handleButtonClick}>
+          <span>터뜨리기</span>
+        </Button>
+        <Button onClick={handleBallonCut}>
+          <span>날리기</span>
+        </Button>
+      </ButtonContainer>
       <CloudAnimated>
         <CloudImage src={cloudImage} alt="구름" width="300px" />
       </CloudAnimated>
     </Background>
   );
 }
+const ButtonContainer = styled.div`
+  display: flex;
+  gap: 1rem;
+`;
 
 const Button = styled.button`
-  background-color: red;
+  margin: 20px;
+  width: 100px;
+  height: 40px;
+  border-radius: 5px;
+  padding: 10px 25px;
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  display: inline-block;
+  outline: none;
+  background: rgb(247, 150, 192);
+  background: radial-gradient(
+    circle,
+    rgba(247, 150, 192, 1) 0%,
+    rgba(118, 174, 241, 1) 100%
+  );
+  line-height: 42px;
+  padding: 0;
+  border: none;
+  span {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 100%;
+    color: white;
+    font-size: 0.9rem;
+    font-weight: 400;
+  }
+
+  &:before {
+    right: 0;
+    top: 0;
+    transition: all 500ms ease;
+  }
+  &:after {
+    left: 0;
+    bottom: 0;
+    transition: all 500ms ease;
+  }
+  &:hover {
+    background: transparent;
+    color: #76aef1;
+    box-shadow: none;
+    :before {
+      transition: all 500ms ease;
+      height: 100%;
+    }
+    :after {
+      transition: all 500ms ease;
+      height: 100%;
+    }
+  }
+  span:before {
+    left: 0;
+    top: 0;
+    width: 0%;
+    height: 0.5px;
+    transition: all 500ms ease;
+  }
+  span:after {
+    right: 0;
+    bottom: 0;
+    width: 0%;
+    height: 0.5px;
+    transition: all 500ms ease;
+  }
+  span:hover:before {
+    width: 100%;
+  }
+  span:hover:after {
+    width: 100%;
+  }
 `;
+
 const Background = styled(motion.div)`
   padding-top: 20rem;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-end;
-  gap: 1rem;
+  gap: 0.5rem;
   position: relative;
   width: 100vw;
   height: 100vh;
