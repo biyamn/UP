@@ -189,7 +189,7 @@ const Container = styled.div`
 `;
 
 const HouseImage = styled.img`
-  padding-bottom: ${({ $houseFlyHeight }) => $houseFlyHeight * 0.8}rem;
+  padding-bottom: ${({ $houseFlyHeight }) => $houseFlyHeight * 0.5}rem;
   user-select: none;
   position: relative;
   z-index: 10;
