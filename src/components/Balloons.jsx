@@ -1,11 +1,13 @@
-import React, { forwardRef } from "react";
+import React, { forwardRef, useEffect, useRef } from "react";
 import BalloonSVG from "./BalloonSVG";
 import mojs from "@mojs/core";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { styled, keyframes } from "styled-components";
 
 const Balloons = forwardRef((props, ref) => {
   Balloons.displayName = "Balloons";
+  const { balloons, setBalloons, top, left, cursorStatus, setCursorStatus } =
+    props;
   const burst = (e, id) => {
     const burst = new mojs.Burst({
       left: 0,
@@ -15,7 +17,7 @@ const Balloons = forwardRef((props, ref) => {
         shape: "line",
         radius: { 2: 5 },
         scale: 2,
-        stroke: props.balloons.find((balloon) => balloon.id === id).color,
+        stroke: balloons.find((balloon) => balloon.id === id).color,
         strokeDasharray: "100%",
         strokeDashoffset: { "-100%": "100%" },
         duration: 700,
@@ -25,12 +27,17 @@ const Balloons = forwardRef((props, ref) => {
         },
       },
     });
-
-    props.setBalloons((prevBalloons) =>
-      prevBalloons.filter((b) => b.id !== id)
-    );
+    setBalloons((prevBalloons) => prevBalloons.filter((b) => b.id !== id));
 
     burst.tune({ x: e.pageX, y: e.pageY }).setSpeed(2).replay();
+  };
+
+  const cut = (id) => {
+    setBalloons((prevBalloons) =>
+      prevBalloons.map((balloon) =>
+        balloon.id === id ? { ...balloon, isTied: false } : balloon
+      )
+    );
   };
 
   const handleBalloonClick = (e, id) => {
@@ -38,36 +45,36 @@ const Balloons = forwardRef((props, ref) => {
   };
 
   return (
-    <Container $top={props.top} $left={props.left} ref={ref}>
-      {props.balloons.map((balloon) => (
-        <SvgContainer
-          onClick={(e) => handleBalloonClick(e, balloon.id)}
-          rotate={balloon.degree}
-          key={balloon.id}
-        >
-          <motion.div
+    <Container $top={top} $left={left} ref={ref}>
+      <AnimatePresence>
+        {balloons.map((balloon) => (
+          <SvgContainerAnimated
+            onClick={(e) => handleBalloonClick(e, balloon.id)}
+            initial={{ y: 0 }}
+            animate={{ y: 0 }}
+            exit={{ y: cursorStatus === "cut" ? -500 : 0 }}
+            key={balloon.id}
             drag
-            dragConstraints={{
-              top: 0,
-              left: 0,
-              right: 0,
-              bottom: 0,
-            }}
+            whileDrag={{ scale: 0.7 }}
+            dragSnapToOrigin
           >
-            <BalloonAnimated>
-              <BalloonImage
-                shape={balloon.shape}
-                rotate={balloon.rotate}
-                color={balloon.color}
-              />
-            </BalloonAnimated>
-          </motion.div>
-        </SvgContainer>
-      ))}
+            <SvgContainer rotate={balloon.degree}>
+              <BalloonAnimated>
+                <BalloonImage
+                  shape={balloon.shape}
+                  rotate={balloon.rotate}
+                  color={balloon.color}
+                />
+              </BalloonAnimated>
+            </SvgContainer>
+          </SvgContainerAnimated>
+        ))}
+      </AnimatePresence>
     </Container>
   );
 });
 
+const SvgContainerAnimated = styled(motion.div)``;
 const BalloonImage = styled(BalloonSVG)`
   user-select: none;
 `;
@@ -79,7 +86,8 @@ const Container = styled.div`
   display: flex;
   flex-direction: row;
   height: 15rem;
-  z-index: 0;
+  background-color: pink;
+  z-index: 1;
 `;
 
 const SvgContainer = styled(motion.div)`
@@ -94,6 +102,12 @@ const moveVertical = keyframes`
   0% { transform: translate(0,  0px); }
   50%  { transform: translate(0, 15px); }
   100%   { transform: translate(0, -0px); }  
+`;
+
+const up = keyframes`
+  0% { transform: translate(0,  0px); }
+  50%  { transform: translate(0, -15px); }
+  100%   { transform: translate(0, -0px); }
 `;
 
 const BalloonAnimated = styled(motion.div)`

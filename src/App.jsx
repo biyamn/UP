@@ -8,11 +8,13 @@ import { motion } from "framer-motion";
 import styled, { keyframes } from "styled-components";
 
 function App() {
+  const [cursorStatus, setCursorStatus] = useState("default"); // ["default", "cut"]
   const [balloons, setBalloons] = useState([]);
   const houseRef = useRef(null);
   const balloonsRef = useRef(null);
 
   const createBalloon = () => {
+    if (balloons.length > 20) return;
     setBalloons((prevBalloons) => [
       ...prevBalloons,
       {
@@ -20,12 +22,21 @@ function App() {
         degree: getRandomDegree(),
         color: getRandomColor(),
         shape: getRandomShape(),
+        isTied: true,
       },
     ]);
   };
 
   const handleHouseClick = () => {
     createBalloon();
+  };
+
+  const handleButtonClick = () => {
+    setCursorStatus("default");
+  };
+
+  const handleBallonCut = () => {
+    setCursorStatus("cut");
   };
 
   const negativeMargin = 40;
@@ -36,10 +47,15 @@ function App() {
   const balloonsLeft =
     (houseRef.current?.offsetWidth || defaultBalloonsLeft) / 2;
 
+  const ballonWeight = balloons.length;
+  const houseFlyHeight = ballonWeight;
+
   return (
     <Background>
       <Container>
         <Balloons
+          cursorStatus={cursorStatus}
+          setCursorStatus={setCursorStatus}
           balloons={balloons}
           setBalloons={setBalloons}
           top={balloonsTop}
@@ -52,8 +68,11 @@ function App() {
           alt="하우스"
           width="200rem"
           ref={houseRef}
+          $houseFlyHeight={houseFlyHeight}
         />
       </Container>
+      <Button onClick={handleButtonClick}>일반</Button>
+      <Button onClick={handleBallonCut}>컷</Button>
       <CloudAnimated>
         <CloudImage src={cloudImage} alt="구름" width="300px" />
       </CloudAnimated>
@@ -61,18 +80,22 @@ function App() {
   );
 }
 
+const Button = styled.button`
+  background-color: red;
+`;
 const Background = styled(motion.div)`
   padding-top: 20rem;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-end;
   gap: 1rem;
   position: relative;
   width: 100vw;
   height: 100vh;
   background-image: url(${skyImage});
   background-size: cover;
+  padding-bottom: 5rem;
 `;
 
 const Container = styled.div`
@@ -80,9 +103,11 @@ const Container = styled.div`
 `;
 
 const HouseImage = styled.img`
+  padding-bottom: ${({ $houseFlyHeight }) => $houseFlyHeight * 0.8}rem;
   user-select: none;
   position: relative;
   z-index: 10;
+  transition: all 0.5s ease-in-out;
 `;
 
 const moveHorizontal = keyframes`
