@@ -2,6 +2,7 @@ import React, { useState, useRef } from "react";
 import Balloons from "./components/Balloons";
 import houseImage from "../public/images/house.png";
 import cloudImage from "../public/images/cloud.png";
+import skyImage from "../public/images/sky.jpg";
 import { getRandomDegree, getRandomColor, getRandomShape } from "./utils";
 import { motion } from "framer-motion";
 import styled, { keyframes } from "styled-components";
@@ -70,8 +71,7 @@ const Background = styled(motion.div)`
   position: relative;
   width: 100vw;
   height: 100vh;
-  background-image: url("./public/images/sky.jpg");
-  /* background-image: url("C:/Users/지선/Desktop/wiggle-wiggle/src/asset/sky.jpg"); */
+  background-image: url(${skyImage});
   background-size: cover;
 `;
 
