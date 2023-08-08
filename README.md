@@ -121,29 +121,6 @@
 
 <br>
 
-## 레퍼런스
-
-<details>
-<summary>레퍼런스</summary>
-<div>
-
-- CSS로 구현한 floating 기능 예시 모음: https://codesandbox.io/examples/package/react-floating-balloons
-- CSS로 구현한 floating 기능 특정 예시: https://codepen.io/Jemimaabu/pen/vYEYdOy
-- react-single-balloon 라이브러리 예시: https://codesandbox.io/s/dank-pond-ppl0nk?file=/src/App.tsx
-- react-single-balloon 라이브러리 소스코드: https://github.com/amitvchaudhary/react-single-balloon
-- framer-motion 라이브러리 drag 기능: https://www.framer.com/motion/gestures/#drag
-- framer-motion 라이브러리 AnimatePresence 컴포넌트: https://www.framer.com/motion/animate-presence
-- mo.js 라이브러리 Burst 기능: https://mojs.github.io/tutorials/burst
-  - remove DOM 관련 이슈: https://github.com/mojs/mojs/issues/11
-- randomcolor 라이브러리: https://github.com/davidmerfield/randomColor=
-- forwardRef eslint 관련 오류: https://pottatt0.tistory.com/entry/eslint-ERROR-forwardRef-Component-definition-is-missing-display-nameeslintreactdisplay-name
-- CSS 버튼 스타일링: https://inpa.tistory.com/entry/CSS-%F0%9F%92%8D-%EB%B2%84%ED%8A%BC-%EB%94%94%EC%9E%90%EC%9D%B8-%EB%AA%A8%EC%9D%8C
-
-</div>
-</details>
-
-<br>
-
 ## 구현 기능 목록
 
 <details>
@@ -185,69 +162,6 @@
   - [x] 컴포넌트 분리
   - [x] styles 파일 분리
   - [x] utils 파일 분리
-
-</div>
-</details>
-
-<br>
-
-## 로그
-
-<details>
-<summary>구현 로그</summary>
-<div>
-
-- 2023/07/29
-  - 레퍼런스 조사
-    - framer-motion 라이브러리
-  - 전체적인 레이아웃 구현
-    - 상단에 풍선 이미지 추가(svg)
-    - 중앙에 집 이미지 추가(png)
-    - 하단에 구름 이미지 추가(png)
-    - 배경색 추가
-- 2023/07/30
-  - 레퍼런스 조사
-    - react-single-balloon 라이브러리
-    - mo.js 라이브러리
-    - css gradient
-    - randomcolor 라이브러리
-  - 주요 요소 구현
-    - 풍선 랜덤한 위치에 추가하는 기능 구현
-    - 선택한 풍선 삭제 기능
-    - mo.js Burst 효과 적용
-- 2023/07/31
-  - 레퍼런스 조사
-    - React Confetti Explosion 라이브러리
-  - 주요 요소 구현
-    - 폰트 추가
-  - 인터랙션 구현
-    - 풍선 floating 기능(수직) 구현
-    - 구름 floating 기능(수평) 구현
-  - 시행착오
-    - burst 효과 후 남은 DOM 잔류 오류 해결(mo.js 라이브러리 onComplete 옵션)
-    - floating 구현: transform과 animation을 함께 쓰기
-- 2023/08/01
-  - 코드 리팩토링
-    - styles 파일 분리
-    - utils 파일 분리
-    - 컴포넌트 분리
-  - 주요 요소 구현
-    - 풍선 고정된 위치(굴뚝)에 생성
-  - 인터랙션 구현
-    - 풍선 드래그 기능 구현
-  - 시행착오
-    - 풍선 위치 고정: position(relative, absolute)
-- 2023/08/02
-  - 인터랙션 구현
-    - 풍선 날리기 기능 구현
-      - 터뜨리기/날리기 버튼 추가
-      - 선택된 모드를 구분 가능하도록 버튼 스타일링
-      - 가위 모드로 전환시 풍선 날리기 기능 구현
-      - 풍선줄을 자르면 풍선이 날아가는 효과 구현
-    - 풍선 개수에 따라 집 상하 이동
-      - 풍선 20개 제한
-  - 시행착오
-    - 풍선 드래그 버그 해결(framer-motion 라이브러리 dragSnapToOrigin 옵션)
 
 </div>
 </details>
