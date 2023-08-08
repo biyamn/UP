@@ -65,9 +65,13 @@
 <br>
 
 ## 기술 스택 및 라이브러리
+- HTML5, CSS3
+- JavaScript
+- React.js
+- styled-components
+- framer-motion
+- mo.js
 
-- 핵심 기술: React.js, JavaScript, styled-components
-- 라이브러리: framer-motion, mo.js
 
 <br>
 
