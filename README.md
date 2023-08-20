@@ -2,7 +2,7 @@
 
 <div align="center">
   <img src='https://github.com/biyamn/UP/assets/101965666/3ce51289-5c08-405e-bab1-09005a08db76' width="50%"/>
-  <h4>배포 링크: https://uuuup.vercel.app</h4>
+  <h4>배포 링크: https://up.biyamn.dev</h4>
 </div>
 
 <br>
